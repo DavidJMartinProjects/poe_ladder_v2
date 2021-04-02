@@ -1,4 +1,4 @@
-package com.poe.ladderservice.db.entity;
+package com.poe.ladderservice.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LeaderBoardEntity {
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -46,5 +45,4 @@ public class LeaderBoardEntity {
 
     private int rank;
     private int level;
-
 }

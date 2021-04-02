@@ -1,6 +1,6 @@
-package com.poe.ladderservice.db.dao;
+package com.poe.ladderservice.domain;
 
-import com.poe.ladderservice.db.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class LadderBoardMapper {
+public class LeaderboardMapper {
 
     public List<LeaderBoardEntity> mapToEntities(List<LadderDto> ladderDtos) {
         log.debug("mapping ladderDtos to Entities.");

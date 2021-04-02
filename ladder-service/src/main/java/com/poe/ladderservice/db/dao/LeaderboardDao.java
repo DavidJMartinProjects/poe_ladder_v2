@@ -2,10 +2,11 @@ package com.poe.ladderservice.db.dao;
 
 import java.util.List;
 
+import com.poe.ladderservice.domain.LeaderboardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.poe.ladderservice.db.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,11 +18,11 @@ public class LeaderboardDao {
     private LeaderboardRepository leaderboardRepository;
 
     @Autowired
-    private LadderBoardMapper mapper;
+    private LeaderboardMapper mapper;
 
-    public void saveAll(List<LadderDto> ladderEntries) {
-        List<LeaderBoardEntity> entities = mapper.mapToEntities(ladderEntries);
-        leaderboardRepository.saveAll(entities);
+    public void saveAll(List<LadderDto> ladderDtos) {
+        List<LeaderBoardEntity> leaderBoardEntities = mapper.mapToEntities(ladderDtos);
+        leaderboardRepository.saveAll(leaderBoardEntities);
         log.debug("successfully saved leaderboard to db.");
     }
 

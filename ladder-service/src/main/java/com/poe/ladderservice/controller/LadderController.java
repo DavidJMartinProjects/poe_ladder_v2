@@ -1,6 +1,6 @@
 package com.poe.ladderservice.controller;
 
-import com.poe.ladderservice.db.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.service.LadderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poe.ladderservice.db.dao.LeaderboardDao;
-import com.poe.ladderservice.db.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
 import com.poe.ladderservice.domain.pojo.league.LeagueDto;
 import com.poe.ladderservice.service.facade.RestTemplateFacade;

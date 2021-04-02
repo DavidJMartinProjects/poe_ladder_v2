@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LeagueDto {
-
     public String id;
     public String realm;
     public String url;
@@ -21,6 +20,5 @@ public class LeagueDto {
     public Date registerAt;
     public boolean delveEvent;
     public List<Rule> rules;
-
 }
 
