@@ -1,0 +1,10 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: ladder-service-postgres-db
+deploy:
+  kubectl:
+    manifests:
+    - postgres-db-deployment.yaml
+
+

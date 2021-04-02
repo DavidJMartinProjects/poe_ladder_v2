@@ -1,0 +1,14 @@
+http:
+  request:
+    headers:
+      Content-Type: application/json
+      user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36
+      Accept-Encoding: gzip deflate
+      Accept-Language:  en-US en
+      Upgrade-Insecure-Requests: 1
+    cookies:
+      - __cfduid=d87ba520d5297c8c0ca7697920e5434341617273382
+      - POESESSID=eff2bd42608e98ce39c63d28a4b5e65d
+      - cf_clearance=b32a2a1c3b51d4bfde7de0cbf7fbc5015de28b0d-1546218127-300-150
+      - _ga=GA1.2.1564561921.1546218143
+      - _gid=GA1.2.350283217.1546218143
