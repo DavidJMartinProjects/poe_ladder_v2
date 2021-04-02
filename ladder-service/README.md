@@ -1,4 +1,5 @@
 ToDo: 
+- turn httpEntityBuilder into a factory
 - add ingress config
 - add routes for ladder-service
 - hook it up to skaffold
