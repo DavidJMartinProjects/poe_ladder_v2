@@ -8,3 +8,11 @@ ToDo:
 - get ladder service and db talking to each other in the running eco-system
 
 - design front end using angular
+
+K8 Configuration: https://www.youtube.com/watch?v=vrjoSsiKZaA
+
+*** Tips ***
+- generate base 64 strings for k8 secrets
+    - echo -n 'postgres' | base64
+    
+

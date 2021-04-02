@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: gamification-service
+build:
+  artifacts:
+  - image: poe-ladder/ladder-service
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - /k8/*.yaml

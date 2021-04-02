@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta12
+kind: Config
+metadata:
+  name: poe-ladder-deployment
+build:
+  local:
+    concurrency: 0 #builds all artifacts in parallel
+requires:
+  - path: ./ladder-service
+deploy:
+  kubectl:
+    manifests:
+      - k8/postgres-db/postgres-db-deployment.yaml
+      - k8/nginx-ingress/nginx.deployment.yaml
+      - k8/nginx-ingress/cloud-generic.yaml
+      - k8/nginx-ingress/ingress.yaml
+
+
+
+
