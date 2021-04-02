@@ -20,11 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="263e66cf-e0fa-4b5e-b7b4-93816ca5ae25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/dao/LeaderboardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/dao/LeaderboardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
