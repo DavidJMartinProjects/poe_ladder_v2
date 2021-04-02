@@ -1,15 +1,14 @@
-package com.poe.ladderservice.service.config;
+package com.poe.ladderservice.service.facade.config;
 
-
-import java.util.Arrays;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
 
 @Component
 public class HttpEntityBuilder {
@@ -30,12 +29,16 @@ public class HttpEntityBuilder {
 
     private void setRequestHeaders() {
         httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        httpRequestConfig.getHeaders().forEach((key, value) -> {
-            httpHeaders.add(key,  value);
-        });
-        httpRequestConfig.getCookies().forEach((value) -> {
-            httpHeaders.add("Cookie", value);
-        });
+        httpRequestConfig.getHeaders().forEach(
+            (key, value) -> {
+                 httpHeaders.add(key,  value);
+            }
+        );
+        httpRequestConfig.getCookies().forEach(
+            (value) -> {
+                httpHeaders.add("Cookie", value);
+            }
+        );
     }
 
 }

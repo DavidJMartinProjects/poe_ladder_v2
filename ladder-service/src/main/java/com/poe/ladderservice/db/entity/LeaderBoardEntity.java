@@ -21,14 +21,11 @@ public class LeaderBoardEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String characterId;
-    private int rank;
     private String rankDifference;
     private String account;
-    private boolean online;
-    private boolean dead;
     private String character;
     private String ascendancy;
     private String time;
@@ -36,12 +33,18 @@ public class LeaderBoardEntity {
     private String timeFormatted;
     private String depth;
     private String depthDifference;
-    private int level;
-    private long experience;
     private String experienceDifference;
     private String progress;
     private String leaderboard;
     private String timeStamp;
     private String realm;
+
+    private boolean online;
+    private boolean dead;
+
+    private long experience;
+
+    private int rank;
+    private int level;
 
 }

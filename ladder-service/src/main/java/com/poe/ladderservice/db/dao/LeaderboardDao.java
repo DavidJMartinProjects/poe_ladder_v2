@@ -14,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 public class LeaderboardDao {
 
     @Autowired
-    LadderRepository ladderRepository;
+    private LadderRepository ladderRepository;
 
     @Autowired
-    LadderMapper mapper;
+    private LadderMapper mapper;
 
     public void saveAll(List<LadderDto> ladderEntries) {
         List<LeaderBoardEntity> entities = mapper.fromDtoListToEntityList(ladderEntries);
@@ -25,4 +25,7 @@ public class LeaderboardDao {
         ladderRepository.saveAll(entities);
     }
 
+    public List<LeaderBoardEntity> findAll() {
+        return ladderRepository.findAll();
+    }
 }

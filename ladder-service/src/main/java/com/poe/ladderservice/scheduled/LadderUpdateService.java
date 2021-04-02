@@ -16,10 +16,10 @@ import java.util.List;
 public class LadderUpdateService {
 
     @Autowired
-    LadderService ladderService;
+    private LadderService ladderService;
 
     @Autowired
-    LeaderboardDao leaderboardDao;
+    private LeaderboardDao leaderboardDao;
 
     public void fetchAndSaveLatestLeaderboards() {
         List<LeagueDto> leaguesDtos = ladderService.getCurrentLeagues();

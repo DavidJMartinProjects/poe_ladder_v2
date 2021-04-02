@@ -1,6 +1,6 @@
 package com.poe.ladderservice.service.facade;
 
-import com.poe.ladderservice.service.config.HttpEntityBuilder;
+import com.poe.ladderservice.service.facade.config.HttpEntityBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -16,10 +16,10 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateFacade {
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    HttpEntityBuilder httpEntityBuilder;
+    private HttpEntityBuilder httpEntityBuilder;
 
     public ResponseEntity<String> getForString(String url) {
         ResponseEntity<String> response;

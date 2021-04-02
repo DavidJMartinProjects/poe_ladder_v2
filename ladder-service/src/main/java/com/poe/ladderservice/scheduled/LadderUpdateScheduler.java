@@ -12,10 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class LadderUpdateScheduler {
 
     @Autowired
-    LadderUpdateService ladderUpdateService;
-
-//    @Autowired
-//    CacheManager cacheManager;
+    private LadderUpdateService ladderUpdateService;
 
     @Scheduled(initialDelay = 10000, fixedRate = 300000)
     public void pollLeaderboards() throws InterruptedException {
