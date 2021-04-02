@@ -20,9 +20,8 @@ public class LeaderboardDao {
     LadderMapper mapper;
 
     public void saveAll(List<LadderDto> ladderEntries) {
-        log.info("*** entities.ascendancy : {}", ladderEntries.get(0));
         List<LeaderBoardEntity> entities = mapper.fromDtoListToEntityList(ladderEntries);
-        log.info("*** entities.ascendancy : {}", entities.get(0).getAscendancy());
+        log.info("saving leaderboard to db.");
         ladderRepository.saveAll(entities);
     }
 

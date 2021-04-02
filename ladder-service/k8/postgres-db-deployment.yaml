@@ -21,15 +21,15 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: ladder-service-postgres-db
 spec:
   selector:
     matchLabels:
-      app: postgres
+      app: ladder-service-postgres-db
   template:
     metadata:
       labels:
-        app: postgres
+        app: ladder-service-postgres-db
     spec:
       volumes:
         - name: postgres-storage
@@ -61,10 +61,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: ladder-service-postgres-db
 spec:
   type: ClusterIP
   ports:
     - port: 5432
   selector:
-    app: postgres
+    app: ladder-service-postgres-db

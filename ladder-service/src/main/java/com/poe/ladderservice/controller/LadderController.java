@@ -25,6 +25,7 @@ public class LadderController {
     @GetMapping(LADDER_PATH)
     @ResponseStatus(HttpStatus.OK)
     public LadderDto getLadders() {
-        return ladderService.getLadderResponse();
+//        return ladderService.getLadderByLeague();
+        return null;
     }
 }

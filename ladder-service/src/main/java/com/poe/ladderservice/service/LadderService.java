@@ -1,29 +1,53 @@
 package com.poe.ladderservice.service;
 
-import java.util.Collections;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
+import com.poe.ladderservice.domain.pojo.league.LeagueDto;
+import com.poe.ladderservice.service.facade.RestTemplateFacade;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poe.ladderservice.db.dao.LeaderboardDao;
-import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
-import com.poe.ladderservice.service.facade.RestTemplateFacade;
+import java.util.ArrayList;
+import java.util.List;
 
+@Slf4j
 @Service
 public class LadderService {
 
-    public static String POE_LADDER_API_URL = "https://api.pathofexile.com/league/Ritual/ladder";
+    public static final String POE_API_BASE_URL = "https://api.pathofexile.com";
+    public static final String LEAGUE_lADDER_URL = POE_API_BASE_URL + "/league/%s/ladder";
+    public static final String LEAGUES_URL = POE_API_BASE_URL + "/leagues";
 
     @Autowired
     RestTemplateFacade restTemplateFacade;
 
     @Autowired
-    LeaderboardDao leaderboardDao;
+    ObjectMapper objectMapper;
 
-    public LadderDto getLadderResponse() {
-        LadderDto ladderDto = restTemplateFacade.getForLadderResponse(POE_LADDER_API_URL);
-        leaderboardDao.saveAll(Collections.singletonList(ladderDto));
+    public LadderDto getLadderByLeague(String league) {
+        LadderDto ladderDto = new LadderDto();
+        log.info("retrieving latest ladder for league: {}", league);
+        try {
+            String url = String.format(LEAGUE_lADDER_URL, league);
+            ladderDto = objectMapper.readValue(restTemplateFacade.getForString(url).getBody(), LadderDto.class);
+        } catch (JsonProcessingException ex) {
+            log.info("encountered json processing error. {}", ex.getMessage());
+        }
         return ladderDto;
+    }
+
+    public List<LeagueDto> getCurrentLeagues() {
+        List<LeagueDto> leaguesDtos = new ArrayList<>();
+        try {
+            String responseBody = restTemplateFacade.getForString(LEAGUES_URL).getBody();
+            leaguesDtos = objectMapper.readValue(responseBody, new TypeReference<List<LeagueDto>>() {});
+        } catch (JsonProcessingException ex) {
+            log.info("encountered json processing error. {}", ex.getMessage());
+        }
+        return leaguesDtos;
     }
 
 }
