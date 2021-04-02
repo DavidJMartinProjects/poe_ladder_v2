@@ -9,36 +9,35 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
+import java.util.Collections;
 
 @Component
 public class HttpEntityBuilder {
 
+    private HttpEntity<String> httpEntity;
+
     @Autowired
     private HttpEntityConfig httpRequestConfig;
 
-    private HttpHeaders httpHeaders = new HttpHeaders();
-
     @PostConstruct
     public void init() {
-        setRequestHeaders();
+        httpEntity = new HttpEntity<>("parameters", buildRequestHeaders());
     }
 
     public HttpEntity<String> getConfiguredHttpEntity() {
-        return new HttpEntity<String>("parameters", httpHeaders);
+        return httpEntity;
     }
 
-    private void setRequestHeaders() {
-        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    private HttpHeaders buildRequestHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         httpRequestConfig.getHeaders().forEach(
-            (key, value) -> {
-                 httpHeaders.add(key,  value);
-            }
+                httpHeaders::add
         );
         httpRequestConfig.getCookies().forEach(
-            (value) -> {
-                httpHeaders.add("Cookie", value);
-            }
+            value -> httpHeaders.add("Cookie", value)
         );
+        return httpHeaders;
     }
 
 }

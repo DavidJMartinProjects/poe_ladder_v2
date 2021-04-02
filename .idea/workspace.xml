@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="263e66cf-e0fa-4b5e-b7b4-93816ca5ae25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ladder-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/k8/postgres-db-deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/k8/skaffold.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/test/java/com/poe/ladderservice/LadderServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/test/java/com/poe/ladderservice/LadderServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/dao/LeaderboardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/dao/LeaderboardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +48,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\repo_poeladder_v2\ladder-service\src\main\java\com\poe\ladderservice\db\" />
       <recent name="D:\repo_poeladder_v2\k8\postgres-db" />
       <recent name="D:\repo_poeladder_v2\k8\nginx-ingress" />
     </key>
