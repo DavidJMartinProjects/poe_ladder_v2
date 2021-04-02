@@ -14,18 +14,19 @@ import lombok.extern.slf4j.Slf4j;
 public class LeaderboardDao {
 
     @Autowired
-    private LadderRepository ladderRepository;
+    private LeaderboardRepository leaderboardRepository;
 
     @Autowired
-    private LadderMapper mapper;
+    private LadderBoardMapper mapper;
 
     public void saveAll(List<LadderDto> ladderEntries) {
-        List<LeaderBoardEntity> entities = mapper.fromDtoListToEntityList(ladderEntries);
-        log.info("saving leaderboard to db.");
-        ladderRepository.saveAll(entities);
+        List<LeaderBoardEntity> entities = mapper.mapToEntities(ladderEntries);
+        leaderboardRepository.saveAll(entities);
+        log.debug("successfully saved leaderboard to db.");
     }
 
     public List<LeaderBoardEntity> findAll() {
-        return ladderRepository.findAll();
+        log.debug("fetching all leaderboards from the db.");
+        return leaderboardRepository.findAll();
     }
 }

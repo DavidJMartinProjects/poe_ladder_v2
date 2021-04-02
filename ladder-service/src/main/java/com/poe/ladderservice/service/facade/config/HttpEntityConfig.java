@@ -15,8 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HttpEntityConfig {
-
     private Map<String, String> headers;
     private List<String> cookies;
-
 }

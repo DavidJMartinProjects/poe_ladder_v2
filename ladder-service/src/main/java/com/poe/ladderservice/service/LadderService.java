@@ -24,17 +24,17 @@ public class LadderService {
     public static final String LEAGUES_URL = POE_API_BASE_URL + "/leagues";
 
     @Autowired
-    private RestTemplateFacade restTemplateFacade;
+    private ObjectMapper objectMapper;
 
     @Autowired
     private LeaderboardDao leaderboardDao;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private RestTemplateFacade restTemplateFacade;
 
     public LadderDto getLadderByLeague(String league) {
         LadderDto ladderDto = new LadderDto();
-        log.info("retrieving latest ladder for league: {}", league);
+        log.info("requesting latest ladder for league: {}", league);
         try {
             String url = String.format(LEAGUE_LADDER_URL, league);
             String responseBody = restTemplateFacade.getForString(url).getBody();
@@ -47,7 +47,7 @@ public class LadderService {
 
     public List<LeagueDto> getCurrentLeagues() {
         List<LeagueDto> leaguesDtos = new ArrayList<>();
-        log.info("retrieving current active leagues.");
+        log.info("requesting current active leagues.");
         try {
             String responseBody = restTemplateFacade.getForString(LEAGUES_URL).getBody();
             leaguesDtos = objectMapper.readValue(responseBody, new TypeReference<List<LeagueDto>>() {});

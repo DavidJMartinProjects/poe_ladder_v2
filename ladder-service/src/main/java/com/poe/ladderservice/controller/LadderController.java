@@ -21,11 +21,11 @@ public class LadderController {
     public static final String LADDER_PATH = "/ladder";
 
     @Autowired
-    LadderService ladderService;
+    private LadderService ladderService;
 
     @GetMapping(LADDER_PATH)
     @ResponseStatus(HttpStatus.OK)
-    public List<LeaderBoardEntity> getLadders() {
+    public List<LeaderBoardEntity> getAllLeaderboards() {
         log.info("received GET request to: {}", LADDER_PATH);
         return ladderService.getAllLeaderboards();
     }

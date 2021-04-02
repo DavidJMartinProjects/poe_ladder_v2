@@ -3,17 +3,20 @@ package com.poe.ladderservice.db.dao;
 import com.poe.ladderservice.db.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
-public class LadderMapper {
+public class LadderBoardMapper {
 
-    public List<LeaderBoardEntity> fromDtoListToEntityList(List<LadderDto> ladders) {
+    public List<LeaderBoardEntity> mapToEntities(List<LadderDto> ladderDtos) {
+        log.debug("mapping ladderDtos to Entities.");
         List<LeaderBoardEntity> entities = new ArrayList<>();
-        for (LadderDto ladder : ladders) {
+        for (LadderDto ladder : ladderDtos) {
             List<Entry> ladderEntries = ladder.getLadder().getEntries();
             for (Entry ladderEntry : ladderEntries) {
                 entities.add(mapToEntity(ladderEntry));
@@ -23,6 +26,7 @@ public class LadderMapper {
     }
 
     private LeaderBoardEntity mapToEntity(Entry ladderEntry) {
+        log.debug("mapping to entity.");
         return LeaderBoardEntity.builder()
             .account(ladderEntry.getAccount().getName())
             .ascendancy(ladderEntry.getCharacter().getCharacterClass())
