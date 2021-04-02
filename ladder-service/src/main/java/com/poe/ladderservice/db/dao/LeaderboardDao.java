@@ -1,4 +1,4 @@
-package com.poe.ladderservice.db;
+package com.poe.ladderservice.db.dao;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.poe.ladderservice.db.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
-import com.poe.ladderservice.domain.pojo.mapper.LadderMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

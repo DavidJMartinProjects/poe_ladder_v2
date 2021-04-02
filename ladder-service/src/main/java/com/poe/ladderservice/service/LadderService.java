@@ -5,8 +5,9 @@ import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poe.ladderservice.db.LeaderboardDao;
+import com.poe.ladderservice.db.dao.LeaderboardDao;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
+import com.poe.ladderservice.service.facade.RestTemplateFacade;
 
 @Service
 public class LadderService {

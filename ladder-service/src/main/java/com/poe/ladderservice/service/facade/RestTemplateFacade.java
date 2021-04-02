@@ -1,11 +1,11 @@
-package com.poe.ladderservice.service;
+package com.poe.ladderservice.service.facade;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.poe.ladderservice.config.HttpEntityBuilder;
+import com.poe.ladderservice.service.config.HttpEntityBuilder;
 import com.poe.ladderservice.domain.pojo.ladder.LadderDto;
 
 @Service

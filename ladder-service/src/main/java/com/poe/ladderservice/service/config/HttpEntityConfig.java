@@ -1,4 +1,4 @@
-package com.poe.ladderservice.config;
+package com.poe.ladderservice.service.config;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "http.request")
-public class HttpEntityPropertiesConfig {
+public class HttpEntityConfig {
 
     private Map<String, String> headers;
     private List<String> cookies;

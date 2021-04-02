@@ -1,4 +1,4 @@
-package com.poe.ladderservice.db;
+package com.poe.ladderservice.db.dao;
 
 import java.util.List;
 

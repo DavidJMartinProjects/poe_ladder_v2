@@ -1,4 +1,4 @@
-package com.poe.ladderservice.config;
+package com.poe.ladderservice.service.config;
 
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class HttpEntityBuilder {
 
     @Autowired
-    private HttpEntityPropertiesConfig httpRequestConfig;
+    private HttpEntityConfig httpRequestConfig;
 
     private HttpHeaders httpHeaders = new HttpHeaders();
 

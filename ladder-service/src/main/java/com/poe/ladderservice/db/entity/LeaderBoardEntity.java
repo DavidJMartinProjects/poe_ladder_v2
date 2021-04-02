@@ -24,11 +24,11 @@ public class LeaderBoardEntity {
     private Long id;
 
     private String characterId;
-    private String rank;
+    private int rank;
     private String rankDifference;
     private String account;
-    private String online;
-    private String dead;
+    private boolean online;
+    private boolean dead;
     private String character;
     private String ascendancy;
     private String time;
@@ -36,8 +36,8 @@ public class LeaderBoardEntity {
     private String timeFormatted;
     private String depth;
     private String depthDifference;
-    private String level;
-    private String experience;
+    private int level;
+    private long experience;
     private String experienceDifference;
     private String progress;
     private String leaderboard;
