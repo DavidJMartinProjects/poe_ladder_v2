@@ -18,7 +18,7 @@ import java.util.List;
 public class LadderService {
 
     public static final String POE_API_BASE_URL = "https://api.pathofexile.com";
-    public static final String LEAGUE_lADDER_URL = POE_API_BASE_URL + "/league/%s/ladder";
+    public static final String LEAGUE_LADDER_URL = POE_API_BASE_URL + "/league/%s/ladder";
     public static final String LEAGUES_URL = POE_API_BASE_URL + "/leagues";
 
     @Autowired
@@ -31,7 +31,7 @@ public class LadderService {
         LadderDto ladderDto = new LadderDto();
         log.info("retrieving latest ladder for league: {}", league);
         try {
-            String url = String.format(LEAGUE_lADDER_URL, league);
+            String url = String.format(LEAGUE_LADDER_URL, league);
             ladderDto = objectMapper.readValue(restTemplateFacade.getForString(url).getBody(), LadderDto.class);
         } catch (JsonProcessingException ex) {
             log.info("encountered json processing error. {}", ex.getMessage());
