@@ -23,10 +23,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LadderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LadderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LeagueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LeagueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeagueDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeagueDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/PageParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/PageParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LadderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LadderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LeagueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LeagueService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

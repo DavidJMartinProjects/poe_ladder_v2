@@ -28,13 +28,14 @@ public class LadderService {
         List<LeagueEntity> leagues = leagueDao.getLeagues();
         List<LeaderBoardEntity> topLeaderBoards = new ArrayList<>();
         for(LeagueEntity leagueEntity: leagues) {
-            topLeaderBoards.addAll(leaderboardDao.findByLeague(pageParams, leagueEntity.getLeague()));
+            Page<LeaderBoardEntity> leaderboardPage = leaderboardDao.findByLeague(leagueEntity.getLeague(), pageParams);
+            topLeaderBoards.addAll(leaderboardPage.getContent());
         }
         return topLeaderBoards;
     }
 
     public Page<LeaderBoardEntity> getLeaderboardByLeague(String league, PageParams pageParams) {
-        return leaderboardDao.findAll(league, pageParams);
+        return leaderboardDao.findByLeague(league, pageParams);
     }
 
 }

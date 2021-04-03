@@ -9,6 +9,5 @@ public class PageParams {
 
     private int offset;
     private int limit;
-    private String league;
 
 }

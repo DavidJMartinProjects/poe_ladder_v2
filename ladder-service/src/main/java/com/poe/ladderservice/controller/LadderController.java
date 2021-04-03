@@ -25,7 +25,7 @@ public class LadderController {
     public static final String LADDER_URL = "/ladder";
     public static final String LADDER_SUMMARY_URL = LADDER_URL + "/summary";
     
-    public static final String DEFAULT_LEAGUE = "";
+    public static final String DEFAULT_LEAGUE = "Hardcore";
     public static final String DEFAULT_LIMIT = "5";
     public static final String DEFAULT_OFFSET = "0";
 
@@ -37,8 +37,8 @@ public class LadderController {
     public List<LeaderBoardEntity> getLeaderboardsSummary(
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
-        log.info("received GET request to: {}", LADDER_URL);
-        return ladderService.getLeaderboardsSummary(new PageParams(offset, limit, DEFAULT_LEAGUE));
+        log.info("received GET request to: {}", LADDER_SUMMARY_URL);
+        return ladderService.getLeaderboardsSummary(new PageParams(offset, limit));
     }
 
     @GetMapping(LADDER_URL)
@@ -47,8 +47,8 @@ public class LadderController {
         @RequestParam(defaultValue = DEFAULT_LEAGUE, required = false) String league,
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
-        log.info("received GET request to: {}", LADDER_URL);
-        return ladderService.getLeaderboardByLeague(league, new PageParams(offset, limit, league));
+        log.info("received GET request to: {} for league {}.", LADDER_URL, league);
+        return ladderService.getLeaderboardByLeague(league, new PageParams(offset, limit));
     }
 
 }

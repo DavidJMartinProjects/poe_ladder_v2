@@ -29,4 +29,5 @@ public class LeagueController {
         log.info("received GET request to: {}", LEAGUES_PATH);
         return leagueService.getLeagues();
     }
+
 }
