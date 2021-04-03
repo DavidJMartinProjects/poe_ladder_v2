@@ -24,17 +24,17 @@ public class LadderService {
     @Autowired
     private LeaderboardDao leaderboardDao;
 
-    public Page<LeaderBoardEntity> getAllLeaderboards(String league, PageParams pageParams) {
-        return leaderboardDao.findAll(league, pageParams);
-    }
-
-    public List<LeaderBoardEntity> getTopLeaderboards(PageParams pageParams) {
-        List<LeagueEntity> leagues = leagueDao.findAll();
+    public List<LeaderBoardEntity> getLeaderboardsSummary(PageParams pageParams) {
+        List<LeagueEntity> leagues = leagueDao.getLeagues();
         List<LeaderBoardEntity> topLeaderBoards = new ArrayList<>();
         for(LeagueEntity leagueEntity: leagues) {
             topLeaderBoards.addAll(leaderboardDao.findByLeague(pageParams, leagueEntity.getLeague()));
         }
         return topLeaderBoards;
+    }
+
+    public Page<LeaderBoardEntity> getLeaderboardByLeague(String league, PageParams pageParams) {
+        return leaderboardDao.findAll(league, pageParams);
     }
 
 }

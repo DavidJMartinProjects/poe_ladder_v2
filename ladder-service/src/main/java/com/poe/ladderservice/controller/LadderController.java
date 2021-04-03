@@ -22,8 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 public class LadderController {
 
     public static final String BASE_URL = "/api";
-    public static final String LADDER_PATH = "/ladder";
-    public static final String LADDER_SUMMARY_PATH = LADDER_PATH + "/summary";
+    public static final String LADDER_URL = "/ladder";
+    public static final String LADDER_SUMMARY_URL = LADDER_URL + "/summary";
     
     public static final String DEFAULT_LEAGUE = "";
     public static final String DEFAULT_LIMIT = "5";
@@ -32,21 +32,23 @@ public class LadderController {
     @Autowired
     private LadderService ladderService;
 
-    @GetMapping(LADDER_PATH)
+    @GetMapping(LADDER_SUMMARY_URL)
     @ResponseStatus(HttpStatus.OK)
-    public Page<LeaderBoardEntity> getAllLeaderboards(
+    public List<LeaderBoardEntity> getLeaderboardsSummary(
+        @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
+        @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
+        log.info("received GET request to: {}", LADDER_URL);
+        return ladderService.getLeaderboardsSummary(new PageParams(offset, limit, DEFAULT_LEAGUE));
+    }
+
+    @GetMapping(LADDER_URL)
+    @ResponseStatus(HttpStatus.OK)
+    public Page<LeaderBoardEntity> getLeaderboardByLeague(
         @RequestParam(defaultValue = DEFAULT_LEAGUE, required = false) String league,
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
-        log.info("received GET request to: {}", LADDER_PATH);
-        return ladderService.getAllLeaderboards(league, new PageParams(league, offset, limit));
-    }
-
-    @GetMapping(LADDER_SUMMARY_PATH)
-    @ResponseStatus(HttpStatus.OK)
-    public List<LeaderBoardEntity> getTopLeaderboardsSummary() {
-        log.info("received GET request to: {}", LADDER_PATH);
-        return ladderService.getTopLeaderboards(new PageParams(DEFAULT_OFFSET, DEFAULT_LIMIT));
+        log.info("received GET request to: {}", LADDER_URL);
+        return ladderService.getLeaderboardByLeague(league, new PageParams(offset, limit, league));
     }
 
 }

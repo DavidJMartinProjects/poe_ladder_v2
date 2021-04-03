@@ -20,42 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="263e66cf-e0fa-4b5e-b7b4-93816ca5ae25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/044472ae307fdcf8f1adc0a264cd97fe4e42e355" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/878130e5f917000bc489d13f898ec72373e3e8c1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/0/a0c22a693ddd581bd2727a297f8952ea546653b0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a9a1fa0bd5fe76b3ef16f1a1b940b62877550a1e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a9a1fa0bd5fe76b3ef16f1a1b940b62877550a1e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b654506c51758f78c582c354ff0af1955a0761e7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e57cb1ae5c27978b845abb32dfeaadd24f592c18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f76b64ac05837404f0730afab3ff134d9c14ff90" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc885c784fa410daf1070585bb6844d95e41ad54" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/app/page-header/page-header.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/app/page-header/page-header.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/app/page-header/page-header.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/assets/images/poe-ladder-background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend-service/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend-service/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8/nginx-ingress/ingress.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8/nginx-ingress/ingress.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/LadderServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LadderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LadderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeaderboardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/LeaderboardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/LeaderboardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/entity/LeaderBoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/entity/LeaderBoardEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/league/LeagueDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/league/LeagueDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/LadderUpdateScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/LadderUpdateScheduler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/LadderUpdateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/LadderUpdateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LeagueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/controller/LeagueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeagueDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/db/LeagueDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/PageParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/domain/pojo/PageParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LadderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LadderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/RestTemplateFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/facade/RestTemplateFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/facade/config/HttpEntityBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/facade/config/HttpEntityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/scheduled/facade/config/HttpEntityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LeagueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ladder-service/src/main/java/com/poe/ladderservice/service/LeagueService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

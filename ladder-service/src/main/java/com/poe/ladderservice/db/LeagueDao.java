@@ -1,8 +1,6 @@
 package com.poe.ladderservice.db;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,11 +23,11 @@ public class LeagueDao {
     public void saveAll(List<LeagueDto> leagueDtos) {
         List<LeagueEntity> leagueEntities = mapper.mapToEntities(leagueDtos);
         leagueRepository.saveAll(leagueEntities);
-        log.info("successfully saved leagues to db.");
+        log.info("saved leagues to db.");
     }
 
-    public List<LeagueEntity> findAll() {
-        log.debug("fetching all leagues from the db.");
+    public List<LeagueEntity> getLeagues() {
+        log.debug("fetching leagues from db.");
         return leagueRepository.findAll();
     }
 

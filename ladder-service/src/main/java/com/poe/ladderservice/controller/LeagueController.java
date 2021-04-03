@@ -25,8 +25,8 @@ public class LeagueController {
 
     @GetMapping(LEAGUES_PATH)
     @ResponseStatus(HttpStatus.OK)
-    public List<LeagueEntity> getAllLeagues() {
+    public List<LeagueEntity> getLeagues() {
         log.info("received GET request to: {}", LEAGUES_PATH);
-        return leagueService.fetchAllLeagues();
+        return leagueService.getLeagues();
     }
 }

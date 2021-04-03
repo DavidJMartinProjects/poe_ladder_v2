@@ -16,8 +16,8 @@ public class LeagueService {
     @Autowired
     LeagueDao leagueDao;
 
-    public List<LeagueEntity> fetchAllLeagues() {
-        return leagueDao.findAll();
+    public List<LeagueEntity> getLeagues() {
+        return leagueDao.getLeagues();
     }
 
 }
