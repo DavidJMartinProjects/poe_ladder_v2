@@ -1,0 +1,33 @@
+.navbar {
+    background-color: black;
+    padding: .5em;
+  }
+  
+  .btn {
+   background-color: #1C2F35;
+   border-color: #6c757d!important;
+  }
+  
+  .text-body {
+    color: #f2f5f9!important;
+  }
+  
+  .navbar {
+    background-color: black!important;
+  }
+  
+  .border-info {
+    border-color: #1C2F35!important;
+  
+  }
+  
+  #logo-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  
+ 
+  
+  
+  

@@ -19,15 +19,16 @@ public class LeaderboardMapper {
         for (LadderDto ladder : ladderDtos) {
             List<Entry> ladderEntries = ladder.getLadder().getEntries();
             for (Entry ladderEntry : ladderEntries) {
-                entities.add(mapToEntity(ladderEntry));
+                entities.add(mapToEntity(ladderEntry, ladder.getLeague().getId()));
             }
         }
         return entities;
     }
 
-    private LeaderBoardEntity mapToEntity(Entry ladderEntry) {
+    private LeaderBoardEntity mapToEntity(Entry ladderEntry, String league) {
         log.debug("mapping to entity.");
         return LeaderBoardEntity.builder()
+            .league(league)
             .account(ladderEntry.getAccount().getName())
             .ascendancy(ladderEntry.getCharacter().getCharacterClass())
             .characterId(ladderEntry.getCharacter().getId())

@@ -19,7 +19,8 @@ public class LadderUpdateScheduler {
         log.info("scheduler has initiated an update leaderboards task.");
         try {
             Runtime.getRuntime().gc();
-            ladderUpdateService.fetchAndSaveLatestLeaderboards();
+            ladderUpdateService.fetchAndPersistLatestLeagues();
+            ladderUpdateService.fetchAndPersistLatestLeaderboards();
             log.info("success: task complete - leaderboards have been updated.");
         } finally {
 //            sleepAndClearCache();

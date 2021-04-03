@@ -11,14 +11,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LeagueDto {
-    public String id;
-    public String realm;
-    public String url;
-    public Date startAt;
-    public Object endAt;
-    public String description;
-    public Date registerAt;
-    public boolean delveEvent;
-    public List<Rule> rules;
+    private String id;
+    private String realm;
+    private String url;
+    private Date startAt;
+    private Date endAt;
+    private String description;
+    private Date registerAt;
+    private boolean delveEvent;
+    private List<Rule> rules;
 }
 

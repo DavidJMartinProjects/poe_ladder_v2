@@ -22,6 +22,7 @@ public class LeaderBoardEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
+    private String league;
     private String characterId;
     private String rankDifference;
     private String account;

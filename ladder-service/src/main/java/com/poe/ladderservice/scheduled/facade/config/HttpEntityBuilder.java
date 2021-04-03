@@ -1,4 +1,4 @@
-package com.poe.ladderservice.service.facade.config;
+package com.poe.ladderservice.scheduled.facade.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
+
 import java.util.Collections;
 
 @Component
