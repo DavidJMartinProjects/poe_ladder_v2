@@ -75,7 +75,7 @@ public class RankEntity {
     private long experience;
 
     @Column(name="xp_difference")
-    private long experienceDifference;
+    private String experienceDifference;
 
     @Column(name="progress")
     private String progress;

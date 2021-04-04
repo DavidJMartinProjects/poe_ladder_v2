@@ -12,10 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class RankDifferenceCalc {
+public class RankCalc {
 	
 	@Autowired
-	LeagueComparisonUtil leagueComparisonUtil;
+	RankUtil rankUtil;
 	
 	public List<RankEntity> calcRankings(List<RankEntity> oldRanks, List<RankEntity> newRanks) {
 		log.info("comparing league data to determine latest rankings.");
@@ -40,16 +40,16 @@ public class RankDifferenceCalc {
 	}
 
 	private RankEntity calcRankDifference(RankEntity oldRank, RankEntity newRank) {
-		RankEntity updatedRank = newRank;
-		updatedRank.setRankDifference(leagueComparisonUtil.compareRankDifference(oldRank, newRank));
-		if(updatedRank.getLeaderboard().equals(LadderTypes.RACETO100.toString())) {
-			updatedRank.setExperienceDifference(leagueComparisonUtil.calcXpDifference(oldRank, newRank));
-		} else if(updatedRank.getLeaderboard().equals(LadderTypes.DELVE.toString())) {
-			updatedRank.setDepthDifference(leagueComparisonUtil.compareDepthDifference(oldRank, newRank));
-		} else if(updatedRank.getLeaderboard().equals(LadderTypes.UBERLAB.toString())) {
-			updatedRank.setTimeDifference(leagueComparisonUtil.compareTimeDifference(oldRank, newRank));
+		RankEntity rank = newRank;
+		rank.setRankDifference(rankUtil.calcRankDifference(oldRank, newRank));
+		if(rank.getLeaderboard().equals(LadderTypes.RACETO100.getType())) {
+			rank.setExperienceDifference(rankUtil.calcXpDifference(oldRank, newRank));
+		} else if(rank.getLeaderboard().equals(LadderTypes.DELVE.getType())) {
+			rank.setDepthDifference(rankUtil.calcDepthDifference(oldRank, newRank));
+		} else if(rank.getLeaderboard().equals(LadderTypes.UBERLAB.getType())) {
+			rank.setTimeDifference(rankUtil.calcTimeDifference(oldRank, newRank));
 		}
-		return updatedRank;
+		return rank;
 	}
 	
 }

@@ -1,6 +1,6 @@
 package com.poe.ladderservice.db;
 
-import com.poe.ladderservice.domain.LeaderboardMapper;
+import com.poe.ladderservice.domain.RankMapper;
 import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class LeaderboardDao {
     private LeaderboardRepository leaderboardRepository;
 
     @Autowired
-    private LeaderboardMapper mapper;
+    private RankMapper mapper;
 
     public Page<RankEntity> findByLeague(String league, PageParams pageParams) {
         log.debug("fetching all leaderboards from the db.");

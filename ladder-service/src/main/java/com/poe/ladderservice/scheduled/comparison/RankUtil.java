@@ -2,25 +2,25 @@ package com.poe.ladderservice.scheduled.comparison;
 
 import org.springframework.stereotype.Component;
 
-import com.poe.ladder.backend.leaderboard.util.FormattingUtils;
 import com.poe.ladderservice.domain.entity.RankEntity;
+import com.poe.ladderservice.scheduled.utils.FormattingUtils;
 
 @Component
-public class LeagueComparisonUtil {
+public class RankUtil {
 	
-	public String compareTimeDifference(RankEntity oldLeagueDataEntry, RankEntity newLeagueDataEntry) {
+	public String calcTimeDifference(RankEntity oldLeagueDataEntry, RankEntity newLeagueDataEntry) {
 		return calculateDifference(oldLeagueDataEntry.getTime(), newLeagueDataEntry.getTime());
 	}
 	
-	public String compareDepthDifference(RankEntity oldLeagueDataEntry, RankEntity newLeagueDataEntry) {
+	public String calcDepthDifference(RankEntity oldLeagueDataEntry, RankEntity newLeagueDataEntry) {
 		return calculateDifference(oldLeagueDataEntry.getRank(), newLeagueDataEntry.getRank());		
 	}
 	
-	public String compareRankDifference(RankEntity oldEntry, RankEntity newEntry) {
+	public String calcRankDifference(RankEntity oldEntry, RankEntity newEntry) {
 		return FormattingUtils.formatRank(calculateDifference(newEntry.getRank(), oldEntry.getRank()));
 	}	
 	
-	public long calcXpDifference(RankEntity oldXp, RankEntity newXp) {
+	public String calcXpDifference(RankEntity oldXp, RankEntity newXp) {
 		String oldXpAsString="0";		
 		if(oldXp != null) {
 			oldXpAsString = FormattingUtils.removeCommasFromXpValue(oldXp.getExperience());

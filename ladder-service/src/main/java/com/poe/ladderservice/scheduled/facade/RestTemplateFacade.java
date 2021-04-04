@@ -1,6 +1,6 @@
 package com.poe.ladderservice.scheduled.facade;
 
-import com.poe.ladderservice.scheduled.facade.config.HttpEntityBuilder;
+import com.poe.ladderservice.scheduled.facade.httpEntity.HttpEntityBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class LeaderboardMapper {
+public class RankMapper {
 
-    public RankEntity mapToLeaderboardEntry(String leagueName, LadderTypes types, Entry entry, String timestamp) {
+    public RankEntity toRankEntity(String leagueName, LadderTypes types, Entry entry, String timestamp) {
         RankEntity entity = RankEntity.builder()
             .character(entry.getCharacter().getName())
             .account(entry.getAccount().getName())

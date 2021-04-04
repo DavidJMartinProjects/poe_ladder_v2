@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "total",
     "entries"
 })
-public class ResponseEntry {
+public class LadderResponse {
 
     @JsonProperty("total")
     private Double total;

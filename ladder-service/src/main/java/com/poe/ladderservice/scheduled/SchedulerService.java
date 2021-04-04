@@ -1,14 +1,10 @@
 package com.poe.ladderservice.scheduled;
 
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -23,28 +19,26 @@ import com.poe.ladderservice.db.LadderDao;
 import com.poe.ladderservice.db.LeaderboardDao;
 import com.poe.ladderservice.db.LeaderboardRepository;
 import com.poe.ladderservice.db.LeagueDao;
-import com.poe.ladderservice.domain.LeaderboardMapper;
+import com.poe.ladderservice.domain.RankMapper;
 import com.poe.ladderservice.domain.LeagueMapper;
 import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.enums.LadderTypes;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
-import com.poe.ladderservice.domain.pojo.ladder.Ladder;
-import com.poe.ladderservice.domain.pojo.ladder.ResponseEntry;
+import com.poe.ladderservice.domain.pojo.ladder.LadderResponse;
 import com.poe.ladderservice.domain.pojo.league.LeagueDto;
+import com.poe.ladderservice.scheduled.comparison.RankCalc;
 import com.poe.ladderservice.scheduled.urls.UrlsBuilder;
 import com.poe.ladderservice.scheduled.facade.RestTemplateFacade;
-import com.poe.ladderservice.scheduled.facade.config.HttpEntityBuilder;
+import com.poe.ladderservice.scheduled.facade.httpEntity.HttpEntityBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 public class SchedulerService {
 
-    public static final String POE_API_BASE_URL = "https://api.pathofexile.com";
-    public static final String LEAGUE_LADDER_URL = POE_API_BASE_URL + "/league/%s/ladder";
-    public static final String LEAGUES_URL = POE_API_BASE_URL + "/leagues";
+    public static final String POE_API_LEAGUES_URL = "https://api.pathofexile.com/leagues";
 
-    private List<RankEntity> rankEntityList = new ArrayList<>();
+    private List<RankEntity> ranks = new ArrayList<>();
 
     @Autowired
     private LeagueDao leagueDao;
@@ -68,7 +62,7 @@ public class SchedulerService {
     private RestTemplateFacade restTemplateFacade;
 
     @Autowired
-    LeaderboardMapper leaderboardMapper;
+    RankMapper rankMapper;
 
     @Autowired
     LeagueMapper leagueMapper;
@@ -79,6 +73,11 @@ public class SchedulerService {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    RankCalc rankCalc;
+
+    private List<RankEntity> oldRanks = new ArrayList<>();
+
     public void persistLatestLeagues() {
         leagueDao.deleteAll();
         leagueDao.saveAll(getLeagues());
@@ -87,7 +86,7 @@ public class SchedulerService {
     public List<LeagueDto> getLeagues() {
         List<LeagueDto> leaguesDtos = new ArrayList<>();
         log.info("requesting current active leagues.");
-        String responseBody = restTemplateFacade.getForString(LEAGUES_URL).getBody();
+        String responseBody = restTemplateFacade.getForString(POE_API_LEAGUES_URL).getBody();
         try {
             leaguesDtos = objectMapper.readValue(responseBody, new TypeReference<List<LeagueDto>>() {});
         } catch (JsonProcessingException ex) {
@@ -96,79 +95,44 @@ public class SchedulerService {
         return leaguesDtos;
     }
 
-    public List<Ladder> getLatestLadders() {
-        log.info("retrieving latest ladders from www.pathofexile.com/api");
-        List<Ladder> latestLadders = new ArrayList<>();
-        for (Map<String, String> urlsList : urlBuilder.getUrls()) {
-            requestLadderFromUrl(latestLadders, urlsList);
-        }
-        return latestLadders;
-    }
-
-    private void requestLadderFromUrl(List<Ladder> latestLadders, Map<String, String> urlsList) {
-        for (Map.Entry<String, String> ladderUrl : urlsList.entrySet()) {
-            Ladder ladder = new Ladder();
-            String responseBody = restTemplateFacade.getForString(ladderUrl.getValue()).getBody();
-            try {
-                TimeUnit.MILLISECONDS.sleep(500);
-                ladder = objectMapper.readValue(responseBody, Ladder.class);
-            } catch (JsonProcessingException | InterruptedException ex) {
-                log.info("encountered json processing error. {}", ex.getMessage());
-            }
-            latestLadders.add(ladder);
-            log.info("latestLadders.size(): {}", latestLadders.size());
-        }
-    }
-
     public void persistLatestLadders() {
-        log.info("getLeaderboardRankings() : attempting to retrieve latest ladders from pathofexile.com");
-        List<RankEntity> latestLeaderboardEntities = new ArrayList<>();
+        log.info("fetching latest ladder rankings from pathofexile.com");
+        List<RankEntity> newRanks = new ArrayList<>();
         for (Map<String, String> urlsList : urlBuilder.getUrls()) {
             for (Map.Entry<String, String> leagueUrl : urlsList.entrySet()) {
-                List<Entry> apiResponseList = requestLeaderboardFromPoeApi(leagueUrl.getValue());
-                latestLeaderboardEntities.addAll(mapApiResponseToEntity(apiResponseList, leagueUrl.getValue(), leagueUrl.getKey(), String.valueOf(Time.from(Instant.now()))));
+                List<Entry> apiResponseList = getLadderFromPoeApi(leagueUrl.getValue());
+                newRanks.addAll(
+                    mapResponseToRanks(apiResponseList, leagueUrl.getValue(), leagueUrl.getKey(), String.valueOf(Time.from(Instant.now())))
+                );
             }
         }
-//        if(!previousLeaderboardEntities.isEmpty()) {
-//            latestLeaderboardEntities = leagueComparisonService.compareLeague(previousLeaderboardEntities, latestLeaderboardEntities);
-//        }
-//        previousLeaderboardEntities = latestLeaderboardEntities;
-        persistEntityToDb(latestLeaderboardEntities);
+        if(!oldRanks.isEmpty()) {
+            newRanks = rankCalc.calcRankings(oldRanks, newRanks);
+        }
+        oldRanks = newRanks;
+        persistRanksToDb(newRanks);
     }
-    private void persistEntityToDb(List<RankEntity> leaderboardEntries) {
-        log.info("persistEntityToDb() : saving leaderboard results to poe-ladder database.");
+
+    private void persistRanksToDb(List<RankEntity> ranks) {
         leaderboardRepository.deleteAll();
-        for(RankEntity entity: leaderboardEntries) {
+        for(RankEntity entity: ranks) {
             leaderboardRepository.save(entity);
         }
+        log.info("saved ranks to db.");
     }
 
-    public List<RankEntity> mapApiResponseToEntity(List<Entry> apiResponseList, String requestUrl, String leagueName, String timestamp) {
-        log.info("mapApiResponseToEntity(): request received to map api response to leaderboard entity");
-        rankEntityList.clear();
-        LadderTypes leaderboardType = determineLeaderboardType(requestUrl, leagueName);
+    public List<RankEntity> mapResponseToRanks(List<Entry> apiResponseList, String requestUrl, String leagueName, String timestamp) {
+        log.debug("mapping api response to leaderboard entity");
+        ranks.clear();
+        LadderTypes types = resolveLadderType(requestUrl, leagueName);
         for (Entry responseEntry : apiResponseList) {
-            RankEntity leaderboardEntity = leaderboardMapper.mapToLeaderboardEntry(leagueName, leaderboardType, responseEntry, timestamp);
-            rankEntityList.add(leaderboardEntity);
+            RankEntity rank = rankMapper.toRankEntity(leagueName, types, responseEntry, timestamp);
+            ranks.add(rank);
         }
-        return rankEntityList;
+        return ranks;
     }
 
-    public static String getCurrentTimestamp() {
-        Date date = new Date();
-        Timestamp ts=new Timestamp(date.getTime());
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return formatter.format(ts);
-    }
-
-    public static String formatSecondsToMinutes(String timeInSeconds) {
-        Integer theTime = new Integer(timeInSeconds);
-        int minutes = theTime/60;
-        int seconds = theTime%60;
-        return ""+minutes+"min "+seconds+"sec";
-    }
-
-    private LadderTypes determineLeaderboardType(String url, String leagueName) {
+    private LadderTypes resolveLadderType(String url, String leagueName) {
         if (url.contains(String.format(urlBuilder.buildDelveUrls(leagueName)))) {
             return LadderTypes.DELVE;
         } else if (url.contains(urlBuilder.buildUberLabUrls(leagueName))) {
@@ -179,14 +143,13 @@ public class SchedulerService {
         return LadderTypes.UNKNOWN;
     }
 
-    public List<Entry> requestLeaderboardFromPoeApi(String url)  {
-        log.info("requestLeaderboardFromPoeApi() : httprequest to {}", url);
+    public List<Entry> getLadderFromPoeApi(String url)  {
+        log.debug("making http request to url: {}", url);
         List<Entry> responseEntriesList = new ArrayList<>();
         try {
-            ResponseEntity<ResponseEntry> leaderboardApiRequest = restTemplate.exchange(url, HttpMethod.GET, httpEntityBuilder.getConfiguredHttpEntity(), ResponseEntry.class);
-            log.info("response: {}, status code: {}", leaderboardApiRequest.getBody(), leaderboardApiRequest.getStatusCode());
-            ResponseEntry leaderboardApiResponseBody = leaderboardApiRequest.getBody();
-            responseEntriesList = leaderboardApiResponseBody.getEntries();
+            ResponseEntity<LadderResponse> response = restTemplate.exchange(url, HttpMethod.GET, httpEntityBuilder.getConfiguredHttpEntity(), LadderResponse.class);
+            log.debug("response: {}, status code: {}", response.getBody(), response.getStatusCode());
+            responseEntriesList = response.getBody().getEntries();
         } catch (Exception ex) {
             log.info("poe api response error: {}, {}", ex.getMessage(), ex.getCause());
         } finally {
@@ -197,9 +160,9 @@ public class SchedulerService {
 
     private void sleepBeforeNextApiRequest() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException ex) {
-            throw new RuntimeException("sleepBeforeNextApiRequest() encountered an InterruptedException : " + ex);
+            throw new RuntimeException("encountered an InterruptedException while sleeping. " + ex);
         }
     }
 

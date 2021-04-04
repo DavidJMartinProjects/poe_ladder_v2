@@ -1,5 +1,7 @@
 package com.poe.ladderservice.scheduled.utils;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import java.text.DecimalFormat;
 
 import org.springframework.stereotype.Component;
@@ -9,27 +11,25 @@ import org.apache.commons.lang3.StringUtils;
 @Component
 public class FormattingUtils {
 
-    private static DecimalFormat formatter = new DecimalFormat("#,###");
+    private static final DecimalFormat FORMATTER = new DecimalFormat("#,###");
 
     public static String formatStringToDouble(String number) {
-        String numberAsString = number.replaceAll(",", "");
-        Double numberAsDouble = Double.parseDouble(numberAsString);
-        return formatter.format(numberAsDouble);
+        return FORMATTER.format(Double.parseDouble(number.replace(",", "")));
     }
     
     public static String removeCommasFromXpValue(long xpValue) {
-		return String.valueOf(xpValue).replaceAll(",", "");
+		return String.valueOf(xpValue).replace(",", "");
 	}
 	
     public static String formatXpDifference(String xpDifference) {
-    	if(StringUtils.isBlank(xpDifference)) {
+    	if(isBlank(xpDifference)) {
     		return String.valueOf("");
 		}
 		return String.format("%.2fM", Double.parseDouble(xpDifference)/ 1000000.0);
 	}
     
     public static String formatRank(String rankDifference) {
-		Long difference = Long.parseLong(rankDifference);
+		long difference = Long.parseLong(rankDifference);
 		if(difference > 0) {
 			return "+" + difference;
 		}

@@ -1,4 +1,4 @@
-package com.poe.ladderservice.scheduled.facade.config;
+package com.poe.ladderservice.scheduled.facade.httpEntity;
 
 import java.util.List;
 import java.util.Map;
