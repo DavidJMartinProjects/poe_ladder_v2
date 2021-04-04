@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.poe.ladderservice.db.LeagueDao;
 import com.poe.ladderservice.domain.entity.LeagueEntity;
-import com.poe.ladderservice.domain.pojo.league.LeagueDto;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LeagueService {
 
     @Autowired
-    LeagueDao leagueDao;
+    private LeagueDao leagueDao;
 
     public List<LeagueEntity> getLeagues() {
         return leagueDao.getLeagues();

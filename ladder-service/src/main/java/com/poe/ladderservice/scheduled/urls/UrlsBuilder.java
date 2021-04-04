@@ -1,4 +1,4 @@
-package com.poe.ladderservice.scheduled.config;
+package com.poe.ladderservice.scheduled.urls;
 
 import java.util.ArrayList;
 import java.util.HashMap;

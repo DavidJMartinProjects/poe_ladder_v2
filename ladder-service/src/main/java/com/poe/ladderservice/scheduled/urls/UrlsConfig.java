@@ -1,4 +1,4 @@
-package com.poe.ladderservice.scheduled.config;
+package com.poe.ladderservice.scheduled.urls;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

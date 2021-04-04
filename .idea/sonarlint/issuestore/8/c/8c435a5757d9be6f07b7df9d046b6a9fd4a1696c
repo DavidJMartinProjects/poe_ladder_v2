@@ -1,0 +1,11 @@
+
+Y	java:S125„"<This block of commented-out lines of code should be removed.(ÁéÕ–8»ÇâÍ‰/
+Q
+java:S3252"3Use static access with "java.util.Date" for "from".(®‰ò•8ÛŸÿÍ‰/
+h	java:S112Ê"FDefine and throw a dedicated exception instead of using a generic one.(”ƒ­ùÿÿÿÿ8çäĞÍ‰/
+c
+java:S2142s"FEither re-interrupt this method or rethrow the "InterruptedException".( „¿è8¢Õ¬Ë‰/
+i
+java:S2142É"FEither re-interrupt this method or rethrow the "InterruptedException".(è®ã¶øÿÿÿÿ8çäĞÍ‰/
+M
+java:S1874¥"/Remove this use of "Integer"; it is deprecated.(•çÿš8é áÍ‰/

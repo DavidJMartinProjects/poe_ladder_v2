@@ -1,6 +1,6 @@
 package com.poe.ladderservice.domain;
 
-import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.enums.LadderTypes;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class LeaderboardMapper {
 
-    public LeaderBoardEntity mapToLeaderboardEntry(String leagueName, LadderTypes types, Entry entry, String timestamp) {
-        LeaderBoardEntity entity = LeaderBoardEntity.builder()
+    public RankEntity mapToLeaderboardEntry(String leagueName, LadderTypes types, Entry entry, String timestamp) {
+        RankEntity entity = RankEntity.builder()
             .character(entry.getCharacter().getName())
             .account(entry.getAccount().getName())
             .online(entry.getOnline())
@@ -28,7 +28,7 @@ public class LeaderboardMapper {
         return entity;
     }
 
-    public void resolveLeagueSpecificFields(LadderTypes types, Entry entry, LeaderBoardEntity leaderboard) {
+    public void resolveLeagueSpecificFields(LadderTypes types, Entry entry, RankEntity leaderboard) {
         if (types == LadderTypes.DELVE) {
             leaderboard.setDepth(entry.getCharacter().getDepth().getSolo().toString());
             leaderboard.setDead(entry.getDead());

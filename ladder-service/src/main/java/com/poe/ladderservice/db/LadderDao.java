@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
 
 @Service
@@ -17,11 +17,11 @@ public class LadderDao {
     @Autowired
     LadderRepository ladderRepository;
 
-    public void saveAll(List<LeaderBoardEntity> latestLadders) {
+    public void saveAll(List<RankEntity> latestLadders) {
         ladderRepository.saveAll(latestLadders);
     }
 
-    public Page<LeaderBoardEntity> findByLeague(String league, PageParams pageParams) {
+    public Page<RankEntity> findByLeague(String league, PageParams pageParams) {
         Pageable pageable = PageRequest.of(pageParams.getOffset(), pageParams.getLimit());
         return ladderRepository.findByLeague(league, pageable);
     }

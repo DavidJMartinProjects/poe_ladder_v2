@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.RankEntity;
 
 @Repository
-public interface LeaderboardRepository extends CrudRepository<LeaderBoardEntity, Long>, PagingAndSortingRepository<LeaderBoardEntity, Long> {
-    Page<LeaderBoardEntity> findByLeague(String league, Pageable pageable);
+public interface LeaderboardRepository extends CrudRepository<RankEntity, Long>, PagingAndSortingRepository<RankEntity, Long> {
+    Page<RankEntity> findByLeague(String league, Pageable pageable);
 }

@@ -22,7 +22,7 @@ import lombok.Setter;
 @Builder
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class LeaderBoardEntity {
+public class RankEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

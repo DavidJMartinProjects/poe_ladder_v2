@@ -25,13 +25,13 @@ import com.poe.ladderservice.db.LeaderboardRepository;
 import com.poe.ladderservice.db.LeagueDao;
 import com.poe.ladderservice.domain.LeaderboardMapper;
 import com.poe.ladderservice.domain.LeagueMapper;
-import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
+import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.enums.LadderTypes;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
 import com.poe.ladderservice.domain.pojo.ladder.Ladder;
 import com.poe.ladderservice.domain.pojo.ladder.ResponseEntry;
 import com.poe.ladderservice.domain.pojo.league.LeagueDto;
-import com.poe.ladderservice.scheduled.config.UrlsBuilder;
+import com.poe.ladderservice.scheduled.urls.UrlsBuilder;
 import com.poe.ladderservice.scheduled.facade.RestTemplateFacade;
 import com.poe.ladderservice.scheduled.facade.config.HttpEntityBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +44,7 @@ public class SchedulerService {
     public static final String LEAGUE_LADDER_URL = POE_API_BASE_URL + "/league/%s/ladder";
     public static final String LEAGUES_URL = POE_API_BASE_URL + "/leagues";
 
-    private List<LeaderBoardEntity> leaderBoardEntityList = new ArrayList<>();
+    private List<RankEntity> rankEntityList = new ArrayList<>();
 
     @Autowired
     private LeagueDao leagueDao;
@@ -122,7 +122,7 @@ public class SchedulerService {
 
     public void persistLatestLadders() {
         log.info("getLeaderboardRankings() : attempting to retrieve latest ladders from pathofexile.com");
-        List<LeaderBoardEntity> latestLeaderboardEntities = new ArrayList<>();
+        List<RankEntity> latestLeaderboardEntities = new ArrayList<>();
         for (Map<String, String> urlsList : urlBuilder.getUrls()) {
             for (Map.Entry<String, String> leagueUrl : urlsList.entrySet()) {
                 List<Entry> apiResponseList = requestLeaderboardFromPoeApi(leagueUrl.getValue());
@@ -135,23 +135,23 @@ public class SchedulerService {
 //        previousLeaderboardEntities = latestLeaderboardEntities;
         persistEntityToDb(latestLeaderboardEntities);
     }
-    private void persistEntityToDb(List<LeaderBoardEntity> leaderboardEntries) {
+    private void persistEntityToDb(List<RankEntity> leaderboardEntries) {
         log.info("persistEntityToDb() : saving leaderboard results to poe-ladder database.");
         leaderboardRepository.deleteAll();
-        for(LeaderBoardEntity entity: leaderboardEntries) {
+        for(RankEntity entity: leaderboardEntries) {
             leaderboardRepository.save(entity);
         }
     }
 
-    public List<LeaderBoardEntity> mapApiResponseToEntity(List<Entry> apiResponseList, String requestUrl, String leagueName, String timestamp) {
+    public List<RankEntity> mapApiResponseToEntity(List<Entry> apiResponseList, String requestUrl, String leagueName, String timestamp) {
         log.info("mapApiResponseToEntity(): request received to map api response to leaderboard entity");
-        leaderBoardEntityList.clear();
+        rankEntityList.clear();
         LadderTypes leaderboardType = determineLeaderboardType(requestUrl, leagueName);
         for (Entry responseEntry : apiResponseList) {
-            LeaderBoardEntity leaderboardEntity = leaderboardMapper.mapToLeaderboardEntry(leagueName, leaderboardType, responseEntry, timestamp);
-            leaderBoardEntityList.add(leaderboardEntity);
+            RankEntity leaderboardEntity = leaderboardMapper.mapToLeaderboardEntry(leagueName, leaderboardType, responseEntry, timestamp);
+            rankEntityList.add(leaderboardEntity);
         }
-        return leaderBoardEntityList;
+        return rankEntityList;
     }
 
     public static String getCurrentTimestamp() {
