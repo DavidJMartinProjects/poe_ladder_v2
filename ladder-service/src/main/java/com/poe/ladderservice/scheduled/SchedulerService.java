@@ -92,7 +92,7 @@ public class SchedulerService {
     }
 
     public void persistLatestLadders() {
-        log.info("fetching latest ladder rankings from pathofexile.com");
+        log.debug("fetching latest ladder rankings from pathofexile.com");
         List<RankEntity> newRanks = new ArrayList<>();
         for (Map<String, String> urlsList : urlBuilder.getUrls()) {
             for (Map.Entry<String, String> leagueUrl : urlsList.entrySet()) {
@@ -111,10 +111,7 @@ public class SchedulerService {
 
     private void persistRanksToDb(List<RankEntity> ranks) {
         ladderRepository.deleteAll();
-        for(RankEntity entity: ranks) {
-            ladderRepository.save(entity);
-        }
-        log.info("saved ranks to db.");
+        ladderRepository.saveAll(ranks);
     }
 
     public List<RankEntity> mapResponseToRanks(List<Entry> apiResponseList, String requestUrl, String leagueName, String timestamp) {

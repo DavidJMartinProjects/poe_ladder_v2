@@ -23,7 +23,7 @@ public class LeagueDao {
     public void saveAll(List<LeagueDto> leagueDtos) {
         List<LeagueEntity> leagueEntities = mapper.mapToEntities(leagueDtos);
         leagueRepository.saveAll(leagueEntities);
-        log.info("saved leagues to db.");
+        log.debug("saved leagues to db.");
     }
 
     public List<LeagueEntity> getLeagues() {
