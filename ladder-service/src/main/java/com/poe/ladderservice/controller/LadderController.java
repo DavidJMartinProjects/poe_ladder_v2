@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
+import com.poe.ladderservice.domain.pojo.ladder_new.Ladder;
 import com.poe.ladderservice.service.LadderService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +35,7 @@ public class LadderController {
 
     @GetMapping(LADDER_SUMMARY_URL)
     @ResponseStatus(HttpStatus.OK)
-    public List<LeaderBoardEntity> getLeaderboardsSummary(
+    public List<LeaderBoardEntity> getLadderSummary(
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
         log.info("received GET request to: {}", LADDER_SUMMARY_URL);
@@ -43,7 +44,7 @@ public class LadderController {
 
     @GetMapping(LADDER_URL)
     @ResponseStatus(HttpStatus.OK)
-    public Page<LeaderBoardEntity> getLeaderboardByLeague(
+    public Page<LeaderBoardEntity> getLadderByLeague(
         @RequestParam(defaultValue = DEFAULT_LEAGUE, required = false) String league,
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {

@@ -26,3 +26,10 @@ http:
       - cf_clearance=b32a2a1c3b51d4bfde7de0cbf7fbc5015de28b0d-1546218127-300-150
       - _ga=GA1.2.1564561921.1546218143
       - _gid=GA1.2.350283217.1546218143
+
+urls:
+  resultsLimit: 100
+  leaderboards:
+    delve: "http://www.pathofexile.com/api/ladders?offset=0&limit=${urls.resultsLimit}&id=%s&type=league&sort=depthsolo&_=1546137921952"
+    raceTo100: "http://api.pathofexile.com/ladders/%s/?limit=${urls.resultsLimit}"
+    uberLab: "http://www.pathofexile.com/api/ladders?offset=0&limit=${urls.resultsLimit}&id=%s&type=labyrinth&difficulty=4"

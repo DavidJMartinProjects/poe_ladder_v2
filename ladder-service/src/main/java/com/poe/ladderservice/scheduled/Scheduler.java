@@ -9,18 +9,18 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Slf4j
 @Configuration
 @EnableScheduling
-public class LadderUpdateScheduler {
+public class Scheduler {
 
     @Autowired
-    private LadderUpdateService ladderUpdateService;
+    private SchedulerService schedulerService;
 
     @Scheduled(initialDelay = 10000, fixedRate = 300000)
     public void pollLeaderboards() throws InterruptedException {
         log.info("scheduler has initiated an update leaderboards task.");
         try {
             Runtime.getRuntime().gc();
-            ladderUpdateService.fetchAndPersistLatestLeagues();
-            ladderUpdateService.fetchAndPersistLatestLeaderboards();
+            schedulerService.persistLatestLeagues();
+            schedulerService.persistLatestLadders();
             log.info("success: task complete - leaderboards have been updated.");
         } finally {
 //            sleepAndClearCache();

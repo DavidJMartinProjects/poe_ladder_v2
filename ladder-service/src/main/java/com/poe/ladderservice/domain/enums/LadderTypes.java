@@ -4,10 +4,10 @@ import lombok.Getter;
 
 public enum LadderTypes {
 
-    STANDARD("Standard"),
-    HARDCORE("Hardcore"),
-    SSF("SSF"),
-    SSF_HARDCORE("SSF Hardcore");
+    DELVE("Top Delve Depths"),
+    UBERLAB("Top UberLab Times"),
+    RACETO100("Top Race to 100"),
+    UNKNOWN("Unknown Leaderboard");
 
     @Getter
     public final String type;

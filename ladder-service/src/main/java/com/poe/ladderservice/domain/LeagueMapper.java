@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class LeagueMapper {
 
-    public List<LeagueEntity> mapToEntities(List<LeagueDto> leagueDtos) {
+    public static List<LeagueEntity> mapToEntities(List<LeagueDto> leagueDtos) {
         log.debug("mapping leagueDto to Entities.");
         List<LeagueEntity> entities = new ArrayList<>();
         for (LeagueDto league : leagueDtos) {
@@ -22,7 +22,7 @@ public class LeagueMapper {
         return entities;
     }
 
-    private LeagueEntity mapToEntity(LeagueDto leagueDto) {
+    private static LeagueEntity mapToEntity(LeagueDto leagueDto) {
         log.debug("mapping to entity.");
         return LeagueEntity.builder()
             .league(leagueDto.getId())

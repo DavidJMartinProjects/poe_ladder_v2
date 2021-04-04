@@ -29,8 +29,10 @@ public class LeagueEntity {
     private String realm;
     private String url;
     private String description;
+
     private Date startAt;
     private Date endAt;
+    
     private boolean delveEvent;
 
 }
