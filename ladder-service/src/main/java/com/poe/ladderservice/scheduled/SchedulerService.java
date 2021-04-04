@@ -27,9 +27,9 @@ import com.poe.ladderservice.domain.LeaderboardMapper;
 import com.poe.ladderservice.domain.LeagueMapper;
 import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.enums.LadderTypes;
-import com.poe.ladderservice.domain.pojo.ladder_new.Entry;
-import com.poe.ladderservice.domain.pojo.ladder_new.Ladder;
-import com.poe.ladderservice.domain.pojo.ladder_new.ResponseEntry;
+import com.poe.ladderservice.domain.pojo.ladder.Entry;
+import com.poe.ladderservice.domain.pojo.ladder.Ladder;
+import com.poe.ladderservice.domain.pojo.ladder.ResponseEntry;
 import com.poe.ladderservice.domain.pojo.league.LeagueDto;
 import com.poe.ladderservice.scheduled.config.UrlsBuilder;
 import com.poe.ladderservice.scheduled.facade.RestTemplateFacade;
@@ -95,26 +95,6 @@ public class SchedulerService {
         }
         return leaguesDtos;
     }
-
-//    public void persistLatestLadders() {
-//        List<Ladder> latestLadders = getLatestLadders();
-////        leaderboardDao.saveAll(ladderDtos);
-//        ladderDao.saveAll(latestLadders);
-//    }
-
-//    public LadderDto getLadderByUrl(String league) {
-//        log.info("updating ladder for league: {}", league);
-//        String url = String.format(LEAGUE_LADDER_URL, league);
-//        String responseBody = restTemplateFacade.getForString(url).getBody();
-//        LadderDto ladderDto = new LadderDto();
-//        try {
-//            ladderDto = objectMapper.readValue(responseBody, LadderDto.class);
-//        } catch (JsonProcessingException ex) {
-//            log.info("encountered json processing error. {}", ex.getMessage());
-//        }
-//        return ladderDto;
-//    }
-
 
     public List<Ladder> getLatestLadders() {
         log.info("retrieving latest ladders from www.pathofexile.com/api");

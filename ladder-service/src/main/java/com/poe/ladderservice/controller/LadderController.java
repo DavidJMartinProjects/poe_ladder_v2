@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
-import com.poe.ladderservice.domain.pojo.ladder_new.Ladder;
 import com.poe.ladderservice.service.LadderService;
 import lombok.extern.slf4j.Slf4j;
 

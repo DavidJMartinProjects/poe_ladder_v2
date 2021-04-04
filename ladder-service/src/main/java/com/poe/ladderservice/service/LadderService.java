@@ -13,7 +13,6 @@ import com.poe.ladderservice.db.LeagueDao;
 import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.entity.LeagueEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
-import com.poe.ladderservice.domain.pojo.ladder_new.Ladder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

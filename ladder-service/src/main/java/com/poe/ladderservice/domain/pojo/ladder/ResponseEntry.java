@@ -1,5 +1,5 @@
 
-package com.poe.ladderservice.domain.pojo.ladder_new;
+package com.poe.ladderservice.domain.pojo.ladder;
 
 import java.util.HashMap;
 import java.util.List;

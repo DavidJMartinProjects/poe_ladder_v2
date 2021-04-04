@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.poe.ladderservice.domain.entity.LeaderBoardEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
-import com.poe.ladderservice.domain.pojo.ladder_new.Ladder;
 
 @Service
 public class LadderDao {

@@ -1,6 +1,6 @@
 package com.poe.ladderservice.domain.pojo.ladder;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +8,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Character{
-    public String id;
-    public String name;
-    public int level;
-    public String characterClass;
-    public int score;
-    public long experience;
+public class Character {
+
+    private String name;
+    private int level;
+    @JsonProperty("id")
+    private String characterId;
+    @JsonProperty("class")
+    private String charClass;
+
+    private long experience;
+    private Depth depth;
+
 }
