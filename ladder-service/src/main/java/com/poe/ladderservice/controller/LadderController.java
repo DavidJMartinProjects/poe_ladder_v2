@@ -38,7 +38,7 @@ public class LadderController {
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
         log.info("received GET request to: {}", LADDER_SUMMARY_URL);
-        return ladderService.getLeaderboardsSummary(new PageParams(offset, limit));
+        return ladderService.getRanksSummary(new PageParams(offset, limit));
     }
 
     @GetMapping(LADDER_URL)
@@ -48,7 +48,7 @@ public class LadderController {
         @RequestParam(defaultValue = DEFAULT_LIMIT, required = false) int limit,
         @RequestParam(defaultValue = DEFAULT_OFFSET, required = false) int offset) {
         log.info("received GET request to: {} for league {}.", LADDER_URL, league);
-        return ladderService.getLeaderboardByLeague(league, new PageParams(offset, limit));
+        return ladderService.getRanksByLeague(league, new PageParams(offset, limit));
     }
 
 }

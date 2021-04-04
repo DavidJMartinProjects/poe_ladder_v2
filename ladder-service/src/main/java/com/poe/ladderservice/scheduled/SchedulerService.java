@@ -16,20 +16,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poe.ladderservice.db.LadderDao;
-import com.poe.ladderservice.db.LeaderboardDao;
-import com.poe.ladderservice.db.LeaderboardRepository;
+import com.poe.ladderservice.db.LadderRepository;
 import com.poe.ladderservice.db.LeagueDao;
-import com.poe.ladderservice.domain.RankMapper;
 import com.poe.ladderservice.domain.LeagueMapper;
+import com.poe.ladderservice.domain.RankMapper;
 import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.enums.LadderTypes;
 import com.poe.ladderservice.domain.pojo.ladder.Entry;
 import com.poe.ladderservice.domain.pojo.ladder.LadderResponse;
 import com.poe.ladderservice.domain.pojo.league.LeagueDto;
 import com.poe.ladderservice.scheduled.comparison.RankCalc;
-import com.poe.ladderservice.scheduled.urls.UrlsBuilder;
 import com.poe.ladderservice.scheduled.facade.RestTemplateFacade;
 import com.poe.ladderservice.scheduled.facade.httpEntity.HttpEntityBuilder;
+import com.poe.ladderservice.scheduled.urls.UrlsBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -53,12 +52,6 @@ public class SchedulerService {
     LadderDao ladderDao;
 
     @Autowired
-    private LeaderboardDao leaderboardDao;
-
-    @Autowired
-    LeaderboardRepository leaderboardRepository;
-
-    @Autowired
     private RestTemplateFacade restTemplateFacade;
 
     @Autowired
@@ -66,6 +59,9 @@ public class SchedulerService {
 
     @Autowired
     LeagueMapper leagueMapper;
+
+    @Autowired
+    LadderRepository ladderRepository;
 
     @Autowired
     HttpEntityBuilder httpEntityBuilder;
@@ -114,9 +110,9 @@ public class SchedulerService {
     }
 
     private void persistRanksToDb(List<RankEntity> ranks) {
-        leaderboardRepository.deleteAll();
+        ladderRepository.deleteAll();
         for(RankEntity entity: ranks) {
-            leaderboardRepository.save(entity);
+            ladderRepository.save(entity);
         }
         log.info("saved ranks to db.");
     }

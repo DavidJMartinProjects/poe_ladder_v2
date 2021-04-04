@@ -8,10 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.poe.ladderservice.db.LadderDao;
-import com.poe.ladderservice.db.LeaderboardDao;
 import com.poe.ladderservice.db.LeagueDao;
-import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.entity.LeagueEntity;
+import com.poe.ladderservice.domain.entity.RankEntity;
 import com.poe.ladderservice.domain.pojo.PageParams;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,10 +24,7 @@ public class LadderService {
     @Autowired
     private LadderDao ladderDao;
 
-    @Autowired
-    private LeaderboardDao leaderboardDao;
-
-    public List<RankEntity> getLeaderboardsSummary(PageParams pageParams) {
+    public List<RankEntity> getRanksSummary(PageParams pageParams) {
         List<LeagueEntity> leagues = leagueDao.getLeagues();
         List<RankEntity> topLeaderBoards = new ArrayList<>();
         for(LeagueEntity leagueEntity: leagues) {
@@ -38,8 +34,8 @@ public class LadderService {
         return topLeaderBoards;
     }
 
-    public Page<RankEntity> getLeaderboardByLeague(String league, PageParams pageParams) {
-        return leaderboardDao.findByLeague(league, pageParams);
+    public Page<RankEntity> getRanksByLeague(String league, PageParams pageParams) {
+        return ladderDao.findByLeague(league, pageParams);
     }
 
 }
